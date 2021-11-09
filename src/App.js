@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Segment, Header, Dropdown } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css'
 
+import tickers from './tickers.js'
 function App() {
+
+  const options = tickers.map((item, index) => ({
+    key: index,
+    text: item.ticker,
+    value: item.ticker
+  }))
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Segment>
+        <Header as='h4' textAlign="right">
+          <Dropdown
+            placeholder='Select a Ticker'
+            search
+            selection
+            options={options} />
+        </Header>
+      </Segment>
+    </>
+  )
 }
 
 export default App;
