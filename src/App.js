@@ -127,8 +127,10 @@ function App() {
       <Segment>
         <Header as='h4' textAlign="right">
           <Dropdown
+            data-testid="dropdown"
             placeholder='Select a Ticker'
             search
+            defaultValue={options[0].value}
             selection
             onChange={(e, { value }) => {
               const url = `https://data.nasdaq.com/api/v3/datasets/WIKI/${value}.json?api_key=${process.env.REACT_APP_API_KEY}`
@@ -140,6 +142,7 @@ function App() {
       </Segment>
       <Segment>
         <HighchartsReact
+          data-testid="stockchart"
           highcharts={Highcharts}
           constructorType={'stockChart'}
           options={stockOptions}
